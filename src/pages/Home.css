@@ -1,0 +1,24 @@
+.page{
+    margin-top: 80px;
+
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.password{
+    display: flex;
+    justify-content: center;
+
+}
+
+.btnContainer2{
+    display:grid;
+    justify-content: center;
+    align-content: center;
+    margin-top: 20px;
+
+}
