@@ -1,0 +1,37 @@
+.btnReg{
+  
+    align-self: center;
+    justify-content: center;
+    cursor: pointer;
+    align-content: center;
+
+}
+
+.btnContainer{
+    display: flex;
+    align-items: center;
+}
+
+.form{
+    margin-top: 10px;
+}
+.payee{
+   font-weight: bold;
+   font-size: 30px;
+   color: brown;
+}
+.payeeContain{
+    margin-top: 60px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: fit-content;
+}
+
+.parap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+
+}

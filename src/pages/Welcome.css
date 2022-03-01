@@ -1,0 +1,68 @@
+
+IonContent{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+   
+.titleContainer{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    
+}
+
+.title{
+    margin-bottom: 30px;
+    margin-top: 20px;
+    /* background-color:beige; */
+    color: #a52a2a;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+
+.username{
+    margin-left: 10px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.card1{
+    margin-bottom: 20px;
+}
+
+.container{
+    overflow: hidden !important;
+    overflow-y: hidden;
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+.scroll{
+    /* padding-right: 0px; */
+    right: 20px;
+    overflow-x: hidden;   
+   
+    
+}
+.scroll::-webkit-scrollbar{
+    display: none;
+}
+
+
+.container,
+.scroll{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   
+}
+
+
