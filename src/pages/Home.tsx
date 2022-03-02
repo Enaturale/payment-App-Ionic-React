@@ -1,20 +1,36 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList,
   IonItem, IonLabel, IonInput, IonButton, IonAlert, useIonAlert
  } from '@ionic/react';
 
 import './Home.css';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import {auth} from '../firebaseConfig';
 
-const Home: React.FC = () => {
+
+
+
+
+const Home: React.FC = ({}) => {
   const [login, setLogin] = useIonAlert();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
-  function loginUser(){
-    console.log(email, password);  
-  }
+   function loginUser(){  
+     if(!email && !password){
+       alert("Enter Email and Password")
+     }
+     else{
+       
+     }
+
+     
+     console.log(email,password);
+
+   }
+
 
   return (
     <IonPage>
@@ -25,7 +41,7 @@ const Home: React.FC = () => {
             <IonInput 
               placeholder='example@gmail.com' 
               type='text' 
-              onIonChange={(e:any) =>setEmail(e.target.value)}  
+              onIonChange={(e:any) => setEmail(e.target.value)}
             />
           </IonItem>
           <IonItem>
@@ -33,17 +49,15 @@ const Home: React.FC = () => {
             <IonInput 
               placeholder='*********'  
               type='password' 
-              onIonChange={(e:any) =>setPassword(e.target.value)}  
+              onIonChange={(e:any) => setPassword(e.target.value)}
+             
             />
           </IonItem>
         </IonList>
 
          <div className='btnContainer'>
            {/* login button */}
-        <IonButton 
-        // () => login('Login Complete', [{text: 'ok'}])} 
-       // routerLink='/welcome'
-            onClick={loginUser}>
+        <IonButton  onClick={loginUser}>
               Log In
         </IonButton>
 
@@ -53,9 +67,7 @@ const Home: React.FC = () => {
 
         <p className='password'>Forgot Password?</p>
 
-        <div className='parap'>
-                <p>You don't have an account? <Link to="/signup">Register</Link></p>
-                </div>
+        
 
         <div className='btnContainer2'>
           <IonButton color='danger'>Log In with Google</IonButton>

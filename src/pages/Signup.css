@@ -35,3 +35,10 @@
     align-self: center;
 
 }
+
+.centerParap{
+    display: flex;
+    align-items: 'center';
+    justify-content: center;
+    
+}
