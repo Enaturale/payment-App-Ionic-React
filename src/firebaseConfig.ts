@@ -1,7 +1,7 @@
 
 import { initializeApp } from 'firebase/app';
 import * as firebase from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 // import{
 //   ​​  //GoogleAuthProvider,
 //   ​​  getAuth,
@@ -35,6 +35,8 @@ const config = {
 }
 const app = initializeApp(config);
 const auth = getAuth(app);
+
+
 
  export{auth}
  export {config}

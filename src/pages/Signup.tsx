@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebaseConfig';
 import { config } from '../firebaseConfig';
+import Welcome from "./Welcome";
 
 const Signup: React.FC =() =>{
     const [email, setEmail] = useState('');
@@ -12,33 +13,33 @@ const Signup: React.FC =() =>{
     const [cpassword, setCPassword] = useState();
 
     function registerUser(){
-        if(email){
-            if(password == cpassword){
-                createUserWithEmailAndPassword(auth, email, password).then(() =>{
-                    alert("User created");
-                })
-
-            }else{
-                alert("Passwords do not match");
-            }
-        }else{
-            alert("Please Check Details");
-        }
-
-
-
-
         // if(email){
-        //     if(password !== cpassword){
-        //         alert('Passwords do not match');
-        //     }else{
-        //         createUserWithEmailAndPassword(auth, email, password).then(()=>{
-        //             alert('User Created');
-        //             <NavLink to='/welcome'></NavLink>
+        //     if(password == cpassword){
+        //         createUserWithEmailAndPassword(auth, email, password).then(() =>{
+        //             alert("User created");
         //         })
+
+        //     }else{
+        //         alert("Passwords do not match");
         //     }
-     
+        // }else{
+        //     alert("Please Check Details");
         // }
+
+
+
+
+        if(email){
+            if(password !== cpassword){
+                alert('Passwords do not match');
+            }else{
+                createUserWithEmailAndPassword(auth, email, password).then(()=>{
+                    alert('User Created');
+                     
+                })
+            }
+     
+        }
        
        
 
@@ -70,7 +71,8 @@ const Signup: React.FC =() =>{
 
                    <IonItem>
                        <IonInput 
-                        type = "email"  
+                        type = "text"  
+                        value={email}
                         placeholder='Email'
                         onIonChange={(e:any) => setEmail(e.target.value)}
                         
@@ -92,7 +94,8 @@ const Signup: React.FC =() =>{
 
                    <IonItem>
                        <IonInput 
-                        type='password' 
+                        type="password" 
+                        value={password}
                         placeholder='Password'
                         onIonChange={(e:any) => setPassword(e.target.value)}                   
                         />
@@ -100,7 +103,7 @@ const Signup: React.FC =() =>{
 
                    <IonItem>
                        <IonInput 
-                        type='password' 
+                        type="password"
                         placeholder='Confirm Password'
                         onIonChange={(e:any) => setCPassword(e.target.value)}                   
                         />

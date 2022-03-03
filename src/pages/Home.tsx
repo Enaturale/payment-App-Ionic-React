@@ -5,8 +5,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList,
  } from '@ionic/react';
 
 import './Home.css';
-import { Link} from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import {auth} from '../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 
 
@@ -19,11 +20,13 @@ const Home: React.FC = ({}) => {
   
 
    function loginUser(){  
-     if(!email && !password){
-       alert("Enter Email and Password")
+     if((!email && !password) || (email == "" && password == "")){
+       alert("Enter Email and Password");
      }
      else{
-       
+       signInWithEmailAndPassword(auth, email, password);
+       alert("Sign in done");
+
      }
 
      
@@ -40,7 +43,7 @@ const Home: React.FC = ({}) => {
             <IonLabel position='floating'>Email: </IonLabel>
             <IonInput 
               placeholder='example@gmail.com' 
-              type='text' 
+              type="text"
               onIonChange={(e:any) => setEmail(e.target.value)}
             />
           </IonItem>
@@ -48,7 +51,7 @@ const Home: React.FC = ({}) => {
             <IonLabel position='floating'>Password: </IonLabel>
             <IonInput 
               placeholder='*********'  
-              type='password' 
+              type="password"
               onIonChange={(e:any) => setPassword(e.target.value)}
              
             />
