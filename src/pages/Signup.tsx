@@ -1,42 +1,30 @@
-import {useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonButton, IonText, IonList, IonItem, IonLabel, IonInput} from '@ionic/react';
+import {useState, useContext} from 'react';
+import {IonContent, IonHeader, IonPage, IonButton, IonText, IonList, IonItem,
+     IonLabel, IonInput, NavContext, IonRouterLink} from '@ionic/react';
 import './Signup.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebaseConfig';
-import { config } from '../firebaseConfig';
-import Welcome from "./Welcome";
 
-const Signup: React.FC =() =>{
+
+
+
+const Signup: React.FC =({}) =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [cpassword, setCPassword] = useState();
-
+    const history = useHistory();
+  
+    const {navigate} = useContext(NavContext);
+    
     function registerUser(){
-        // if(email){
-        //     if(password == cpassword){
-        //         createUserWithEmailAndPassword(auth, email, password).then(() =>{
-        //             alert("User created");
-        //         })
-
-        //     }else{
-        //         alert("Passwords do not match");
-        //     }
-        // }else{
-        //     alert("Please Check Details");
-        // }
-
-
-
-
-        if(email){
+            if(email){
             if(password !== cpassword){
                 alert('Passwords do not match');
             }else{
                 createUserWithEmailAndPassword(auth, email, password).then(()=>{
-                    alert('User Created');
-                     
-                })
+                    alert('User Created');             
+                 })
             }
      
         }

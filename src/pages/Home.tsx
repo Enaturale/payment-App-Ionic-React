@@ -1,36 +1,40 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback, useContext} from 'react';
 
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList,
-  IonItem, IonLabel, IonInput, IonButton, IonAlert, useIonAlert
+  IonItem, IonLabel, IonInput, IonButton, IonAlert, useIonAlert, NavContext
  } from '@ionic/react';
 
 import './Home.css';
-import { Link, NavLink} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {auth} from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 
 
-
-
-const Home: React.FC = ({}) => {
+const Home: React.FC = (props: any) => {
   const [login, setLogin] = useIonAlert();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
+ 
+ 
 
-   function loginUser(){  
-     if((!email && !password) || (email == "" && password == "")){
+const loginUser= () => { 
+ 
+
+     if((!email && !password) || (email === "" && password === "")){
        alert("Enter Email and Password");
      }
      else{
        signInWithEmailAndPassword(auth, email, password);
-       alert("Sign in done");
-
-     }
+        alert("Sign in successful");
+       
+    }
+   
 
      
      console.log(email,password);
+  
 
    }
 
@@ -60,7 +64,7 @@ const Home: React.FC = ({}) => {
 
          <div className='btnContainer'>
            {/* login button */}
-        <IonButton  onClick={loginUser}>
+        <IonButton  onClick={loginUser}> 
               Log In
         </IonButton>
 
@@ -82,3 +86,5 @@ const Home: React.FC = ({}) => {
 };
 
 export default Home;
+
+
